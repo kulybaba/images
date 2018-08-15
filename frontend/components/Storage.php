@@ -21,7 +21,8 @@ class Storage extends Component implements StorageInterface
      * @param UploadedFile $file
      * @return string|null
      */
-    public function saveUploadedFile(UploadedFile $file) {
+    public function saveUploadedFile(UploadedFile $file)
+    {
         $path = $this->preparePath($file);
         
         if ($path && $file->saveAs($path)) {
@@ -73,5 +74,19 @@ class Storage extends Component implements StorageInterface
     public function getFile(string $filename)
     {
         return Yii::$app->params['storageUri'] . $filename;
+    }
+    
+    /**
+     * @param string $filename
+     * @return boolean
+     */
+    public function deleteFile(string $filename)
+    {
+        $file = $this->getStoragePath() . $filename;
+        
+        if (file_exists($file)) {
+            return unlink($file);
+        }
+        return true;
     }
 }
