@@ -6,6 +6,8 @@ use Yii;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use frontend\modules\post\models\forms\PostForm;
+use frontend\models\Post;
+use yii\web\NotFoundHttpException;
 
 /**
  * Default controller for the `post` module
@@ -34,5 +36,24 @@ class DefaultController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+    
+    /**
+     * Renders the create view for the module
+     * @return string
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'post' => $this->findPost($id),
+        ]);
+    }
+    
+    public function findPost($id)
+    {
+        if ($model = Post::findOne($id)) {
+            return $model;
+        }
+        throw new NotFoundHttpException;
     }
 }
