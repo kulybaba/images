@@ -9,4 +9,5 @@ return [
         'maxWidth' => 1280,
         'maxHeight' => 1024,
     ],
+    'maxCommentLenght' => 200,
 ];

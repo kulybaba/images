@@ -9,6 +9,7 @@ use frontend\modules\post\models\forms\PostForm;
 use frontend\models\Post;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use frontend\modules\post\models\Comment;
 
 /**
  * Default controller for the `post` module
@@ -48,9 +49,13 @@ class DefaultController extends Controller
         /* @var $currentUser User */
         $currentUser = Yii::$app->user->identity;
         
+        $countComments = Comment::countComments($id);
+        
         return $this->render('view', [
             'post' => $this->findPost($id),
             'currentUser' => $currentUser,
+            'comments' => $this->getComments($id),
+            'countComments' => $countComments,
         ]);
     }
     
@@ -109,5 +114,16 @@ class DefaultController extends Controller
             return $model;
         }
         throw new NotFoundHttpException;
+    }
+    
+    /**
+     * @param integer $id
+     * @return Comment
+     */
+    public function getComments($id)
+    {
+        if ($model = Comment::find()->where(['post_id' => $id])->all()) {
+            return $model;
+        }
     }
 }
