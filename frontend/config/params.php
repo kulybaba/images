@@ -10,4 +10,8 @@ return [
         'maxHeight' => 1024,
     ],
     'maxCommentLenght' => 200,
+    'postPicture' => [
+        'maxWidth' => 1024,
+        'maxHeight' => 768,
+    ],
 ];
