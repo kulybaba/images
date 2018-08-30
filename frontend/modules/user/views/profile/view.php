@@ -137,3 +137,11 @@ use dosamigos\fileupload\FileUpload;
     </div>
 </div>
 <!-- Modal subscriptions -->
+
+<hr>
+
+<?php foreach ($user->getPosts() as $post): ?>
+    <a href="<?php echo Url::to(['/post/default/view', 'id' => $post->id]); ?>">
+        <img src="<?php echo Yii::$app->storage->getFile($post->filename); ?>" width="350" height="350">
+    </a>
+<?php endforeach; ?>
