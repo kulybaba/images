@@ -59,6 +59,17 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            
+            ['username', 'trim'],
+            ['username', 'required'],
+            ['username', 'string', 'min' => 2, 'max' => 60],
+            
+            ['about', 'trim'],
+            ['about', 'string'],
+            
+            ['nickname', 'trim'],
+            ['nickname', 'string', 'min' => 6, 'max' => 60],
+            ['nickname', 'unique', 'targetClass' => 'frontend\models\User', 'message' => 'This nickname has already been taken.'],
         ];
     }
 

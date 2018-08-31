@@ -26,6 +26,24 @@ class ProfileController extends Controller
         ]);
     }
     
+    public function actionUpdate($id)
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['/user/default/login']);
+        }
+        
+        $model = User::findOne($id);
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Profile page updated!');
+            return $this->refresh();
+        }
+        
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * @param string $nickname
      * @return User
@@ -120,7 +138,7 @@ class ProfileController extends Controller
         $currentUser = Yii::$app->user->identity;
         
         if ($currentUser->deletePicture()) {
-            Yii::$app->session->setFlash('success', 'Picrute deleted');
+            Yii::$app->session->setFlash('success', 'Picture deleted!');
         } else {
             Yii::$app->session->setFlash('danger', 'Error occured');
         }

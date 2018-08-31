@@ -49,6 +49,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'profile/<nickname:\w+>' => 'user/profile/view',
+                'profile/update/<id:\d+>' => 'user/profile/update',
                 'post/<id:\d+>' => 'post/default/view',
                 'post/<post_id:\d+>/comment/create' => 'post/comment/create',
                 'post/<post_id:\d+>/comment/<comment_id:\d+>/update' => 'post/comment/update',
