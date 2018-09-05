@@ -151,7 +151,7 @@ header .header-top .brand-logo h1 span {
 
 .blog-posts {
     position: relative;
-    margin: 50px 0;
+    margin: 0 0 50px 0;
     padding-left: 0;
 }
 
@@ -177,7 +177,7 @@ header .header-top .brand-logo h1 span {
 
 .post
 {
-    margin: 0 0 50px 0;
+    margin: 0 0 10px 0;
 }
 
 .blog-posts .post .author-name {
@@ -208,6 +208,10 @@ header .header-top .brand-logo h1 span {
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
     text-decoration: none;
+}
+
+.blog-posts .post .post-bottom .post-likes a.display-none {
+    display: none;
 }
 
 .blog-posts .post .post-bottom .post-comments, .post-report {
