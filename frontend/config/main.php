@@ -48,6 +48,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'site/index',
                 'profile/<nickname:\w+>' => 'user/profile/view',
                 'profile/update/<id:\d+>' => 'user/profile/update',
                 'post/<id:\d+>' => 'post/default/view',
