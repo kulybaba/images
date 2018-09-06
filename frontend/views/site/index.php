@@ -70,7 +70,7 @@ $this->title = 'Newsfeed';
 
                     <?php else: ?>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12" align="center">
                             Nobody posted yet!
                         </div>
 

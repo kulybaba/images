@@ -4,9 +4,9 @@
  
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-?>
 
-<h1>Edit profile</h1>
+$this->title = 'Edit profile';
+?>
 
 <?php $form = ActiveForm::begin(); ?>
 
@@ -17,7 +17,10 @@ use yii\helpers\Html;
     <?php echo $form->field($model, 'nickname'); ?>
 
     <?php echo Html::submitButton('Edit', [
-        'class' => 'btn btn-primary',
+        'class' => 'btn btn-default',
     ]); ?>
 
 <?php ActiveForm::end(); ?>
+
+<br>
+<br>
