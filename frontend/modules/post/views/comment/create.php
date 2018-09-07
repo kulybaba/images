@@ -4,16 +4,16 @@
  
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-?>
 
-<h1>Create comment</h1>
+$this->title = 'Create comment';
+?>
 
 <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->field($model, 'text'); ?>
 
     <?php echo Html::submitButton('Create', [
-        'class' => 'btn btn-primary',
+        'class' => 'btn btn-default',
     ]); ?>
 
 <?php ActiveForm::end(); ?>
