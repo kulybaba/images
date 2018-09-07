@@ -11,7 +11,7 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <p>Please fill out the following fields to login:</p>
 
@@ -30,13 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Login', ['class' => 'btn btn-default', 'name' => 'login-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
         </div>
         <div class="col-lg-5">
-            <h3>Login with Google</h3>
+            <b>Login with Google</b>
             <?= yii\authclient\widgets\AuthChoice::widget([
                 'baseAuthUrl' => ['/user/default/auth'],
                 'popupMode' => false,
@@ -44,3 +44,5 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+<br>
+<br>

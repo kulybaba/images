@@ -49,9 +49,12 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '/' => 'site/index',
+                'login' => 'user/default/login',
+                'signup' => 'user/default/signup',
                 'profile/<nickname:\w+>' => 'user/profile/view',
                 'profile/update/<id:\d+>' => 'user/profile/update',
                 'post/<id:\d+>' => 'post/default/view',
+                'post/create' => 'post/default/create',
                 'post/<post_id:\d+>/comment/create' => 'post/comment/create',
                 'post/<post_id:\d+>/comment/<comment_id:\d+>/update' => 'post/comment/update',
             ],

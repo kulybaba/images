@@ -11,7 +11,7 @@ $this->title = 'Request password reset';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-request-password-reset">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <p>Please fill out your email. A link to reset password will be sent there.</p>
 
@@ -22,10 +22,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton('Send', ['class' => 'btn btn-default']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
         </div>
     </div>
 </div>
+<br>
+<br>
