@@ -43,4 +43,12 @@ class SiteController extends Controller
             'feedItems' => $feedItems,
         ]);
     }
+    
+    /**
+     * About page
+     */
+    public function actionAbout()
+    {
+        return $this->render('about');
+    }
 }
