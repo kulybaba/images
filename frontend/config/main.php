@@ -60,9 +60,6 @@ return [
                 'post/<post_id:\d+>/comment/<comment_id:\d+>/update' => 'post/comment/update',
             ],
         ],
-        'storage' => [
-            'class' => 'frontend\components\Storage',
-        ],
         'feedService' => [
             'class' => 'frontend\components\FeedService',
         ],
