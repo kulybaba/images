@@ -16,7 +16,7 @@ $this->title = 'Admin';
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Complains</h2>
+                <h2>Complaints</h2>
 
                 <p>Sometimes people post offensive things...</p>
 
