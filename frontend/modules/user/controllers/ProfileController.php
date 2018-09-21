@@ -35,7 +35,7 @@ class ProfileController extends Controller
         $model = User::findOne($id);
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Profile page updated!');
+            Yii::$app->session->setFlash('success', Yii::t('profile', 'Profile page updated!'));
             return $this->refresh();
         }
         
@@ -138,9 +138,9 @@ class ProfileController extends Controller
         $currentUser = Yii::$app->user->identity;
         
         if ($currentUser->deletePicture()) {
-            Yii::$app->session->setFlash('success', 'Picture deleted!');
+            Yii::$app->session->setFlash('success', Yii::t('profile' ,'Picture deleted!'));
         } else {
-            Yii::$app->session->setFlash('danger', 'Error occured');
+            Yii::$app->session->setFlash('danger', Yii::t('profile' ,'Error occurred!'));
         }
         return $this->redirect(['/user/profile/view', 'nickname' => $currentUser->getNickname()]);
     }

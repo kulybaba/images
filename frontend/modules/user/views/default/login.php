@@ -7,36 +7,34 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
+$this->title = Yii::t('user', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h3><?= Html::encode($this->title) ?></h3>
-
-    <p>Please fill out the following fields to login:</p>
+    <p><?php echo Yii::t('user', 'Please fill out the following fields to login:'); ?></p>
 
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'email')->label(Yii::t('user', 'Email'))->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'password')->label(Yii::t('user', 'Password'))->passwordInput() ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                <?= $form->field($model, 'rememberMe')->label(Yii::t('user', 'Remember Me'))->checkbox() ?>
 
                 <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['/user/default/request-password-reset']) ?>.
+                    <?php echo Yii::t('user', 'If you forgot your password you can'); ?> <?= Html::a(Yii::t('user', 'reset it'), ['/user/default/request-password-reset']) ?>.
                 </div>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-default', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton(Yii::t('user', 'Login'), ['class' => 'btn btn-default', 'name' => 'login-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
         </div>
         <div class="col-lg-5">
-            <b>Login with Google</b>
+            <b><?php echo Yii::t('user', 'Login with Google'); ?></b>
             <?= yii\authclient\widgets\AuthChoice::widget([
                 'baseAuthUrl' => ['/user/default/auth'],
                 'popupMode' => false,

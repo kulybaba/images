@@ -69,7 +69,7 @@ class User extends ActiveRecord implements IdentityInterface
             
             ['nickname', 'trim'],
             ['nickname', 'string', 'min' => 6, 'max' => 60],
-            ['nickname', 'unique', 'targetClass' => 'frontend\models\User', 'message' => 'This nickname has already been taken.'],
+            ['nickname', 'unique', 'targetClass' => 'frontend\models\User', 'message' => Yii::t('profile', 'This nickname has already been taken.')],
         ];
     }
 

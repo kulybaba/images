@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\JqueryAsset;
 
-$this->title = 'Post';
+$this->title = Yii::t('post' ,'Post');
 ?>
 <div class="page-posts no-padding">
     <div class="row">
@@ -46,14 +46,16 @@ $this->title = 'Post';
                                 <span class="likes-count"><?php echo $post->countLikes(); ?></span>
                                 &nbsp;&nbsp;&nbsp;
                                 <a href="#" class="btn btn-default button-like <?php echo ($currentUser && $post->isLikedBy($currentUser)) ? "display-none" : ""; ?>" data-id="<?php echo $post->id; ?>">
-                                    Like&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
+                                    <?php echo Yii::t('post', 'Like'); ?>&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
                                 </a>
                                 <a href="#" class="btn btn-default button-unlike <?php echo ($currentUser && $post->isLikedBy($currentUser)) ? "" : "display-none"; ?>" data-id="<?php echo $post->id; ?>">
-                                    Unlike&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>
+                                    <?php echo Yii::t('post', 'Unlike'); ?>&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>
                                 </a>
                             </div>
                             <div class="post-comments">
-                                <?php echo ($countComments) ? $countComments. ' Comments' : '0 Comments' ?>
+                                <?php echo ($countComments) ? Yii::t('post', '{countComments} Comments', [
+                                    'countComments' => $countComments,
+                                ]) : Yii::t('post', '0 Comments'); ?>
                             </div>
                             <div class="post-date">
                                 <span><?php echo Yii::$app->formatter->asDatetime($post->created_at); ?></span>    
@@ -62,10 +64,10 @@ $this->title = 'Post';
                                 <div class="post-report">
                                     <?php if (!$post->isReported($currentUser)): ?>
                                         <a href="#" class="btn btn-default button-complain" data-id="<?php echo $post->id; ?>">
-                                            Report post <i class="fa fa-cog fa-spin fa-fw icon-preloader" style="display:none"></i>
+                                            <?php echo Yii::t('post', 'Report post'); ?> <i class="fa fa-cog fa-spin fa-fw icon-preloader" style="display:none"></i>
                                         </a>
                                     <?php else: ?>
-                                        <p>Post has been reported</p>
+                                        <p><?php echo Yii::t('post', 'Post has been reported'); ?></p>
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>
@@ -76,7 +78,7 @@ $this->title = 'Post';
                     <div class="col-sm-12 col-xs-12">
                         <br>
                         <a href="<?php echo Url::to(['/post/comment/create', 'post_id' => $post->id]); ?>" class="btn btn-default">
-                            Create comment
+                            <?php echo Yii::t('post', 'Create comment'); ?>
                         </a>
                     </div>
                     
@@ -104,11 +106,12 @@ $this->title = 'Post';
                                                     </h4>
                                                     <p><?php echo Html::encode($item->text); ?></p>
                                                     <?php if ($currentUser && $currentUser->id == $item->user_id): ?>
-                                                        <a href="<?php echo Url::to(['/post/comment/update', 'comment_id' => $item->id, 'post_id' => $post->id]); ?>">Update</a>
-                                                        <a href="<?php echo Url::to(['/post/comment/delete', 'comment_id' => $item->id, 'post_id' => $post->id]); ?>">Delete</a>
+                                                        <a href="<?php echo Url::to(['/post/comment/update', 'comment_id' => $item->id, 'post_id' => $post->id]); ?>"><?php echo Yii::t('post', 'Update'); ?></a>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <a href="<?php echo Url::to(['/post/comment/delete', 'comment_id' => $item->id, 'post_id' => $post->id]); ?>"><?php echo Yii::t('post', 'Delete'); ?></a>
                                                         <br>
                                                     <?php elseif ($currentUser && $currentUser->id == $post->user_id): ?>
-                                                        <a href="<?php echo Url::to(['/post/comment/delete', 'comment_id' => $item->id, 'post_id' => $post->id]); ?>">Delete</a>
+                                                        <a href="<?php echo Url::to(['/post/comment/delete', 'comment_id' => $item->id, 'post_id' => $post->id]); ?>"><?php echo Yii::t('post', 'Delete'); ?></a>
                                                         <br>
                                                     <?php endif; ?>
                                                 </div>

@@ -8,7 +8,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\helpers\HtmlPurifier;
 
-$this->title = 'Newsfeed';
+$this->title = Yii::t('newsfeed', 'Newsfeed');
 ?>    
 <div class="page-posts no-padding">                    
     <div class="row">                        
@@ -48,25 +48,29 @@ $this->title = 'Newsfeed';
                                         <span class="likes-count"><?php echo $feedItem->countLikes(); ?></span>
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="#" class="btn btn-default button-unlike <?php echo ($currentUser->likesPost($feedItem->post_id)) ? "" : "display-none"; ?>" data-id="<?php echo $feedItem->post_id; ?>">
-                                            Unlike&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>
+                                            <?php echo Yii::t('newsfeed', 'Unlike'); ?>&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>
                                         </a>
                                         <a href="#" class="btn btn-default button-like <?php echo ($currentUser->likesPost($feedItem->post_id)) ? "display-none" : ""; ?>" data-id="<?php echo $feedItem->post_id; ?>">
-                                            Like&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
+                                            <?php echo Yii::t('newsfeed', 'Like'); ?>&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
                                         </a>
                                     </div>
                                     <div class="post-comments">
-                                        <?php echo ($feedItem->countComments()) ? $feedItem->countComments() . ' Comments' : '0 Comments'; ?>
+                                        <?php echo ($feedItem->countComments()) ?
+                                        Yii::t('newsfeed', '{countComments} Comments', [
+                                            'countComments' => $feedItem->countComments(),
+                                        ]) : Yii::t('newsfeed', '0 Comments'); ?>
                                     </div>
                                     <div class="post-date">
-                                        <span><?php echo Yii::$app->formatter->asDatetime($feedItem->post_created_at); ?></span>    
+                                        <span><?php echo Yii::$app->formatter->asDatetime($feedItem->post_created_at); ?></span>
+                                        
                                     </div>
                                     <div class="post-report">
                                         <?php if (!$feedItem->isReported($currentUser)): ?>
                                             <a href="#" class="btn btn-default button-complain" data-id="<?php echo $feedItem->post_id; ?>">
-                                                Report post <i class="fa fa-cog fa-spin fa-fw icon-preloader" style="display:none"></i>
+                                                <?php echo Yii::t('newsfeed', 'Report post'); ?> <i class="fa fa-cog fa-spin fa-fw icon-preloader" style="display:none"></i>
                                             </a>
                                         <?php else: ?>
-                                            <p>Post has been reported</p>
+                                            <p><?php echo Yii::t('newsfeed', 'Post has been reported'); ?></p>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -77,7 +81,7 @@ $this->title = 'Newsfeed';
                     <?php else: ?>
 
                         <div class="col-md-12" align="center">
-                            Nobody posted yet!
+                            <?php echo Yii::t('newsfeed', 'Nobody posted yet!'); ?>
                         </div>
 
                     <?php endif; ?>

@@ -34,7 +34,7 @@ class DefaultController extends Controller
             $model->picture = UploadedFile::getInstance($model, 'picture');
             
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'Post created!');
+                Yii::$app->session->setFlash('success', Yii::t('post' ,'Post created!'));
                 return $this->goHome();
             }
         }
@@ -125,12 +125,12 @@ class DefaultController extends Controller
         if ($post->complain($currentUser)) {
             return [
                 'success' => true,
-                'text' => 'Post reported',
+                'text' => Yii::t('newsfeed', 'Post reported'),
             ];
         }
         return [
             'success' => false,
-            'text' => 'Error'
+            'text' => Yii::t('post', 'Error occurred!'),
         ];
     }
 

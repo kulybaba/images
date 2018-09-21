@@ -29,7 +29,7 @@ class CommentController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Comment::incrCommentCount($post_id);
-            Yii::$app->session->setFlash('success', 'Comment created!');
+            Yii::$app->session->setFlash('success', Yii::t('post', 'Comment created!'));
             return $this->redirect(['/post/default/view', 'id' => $post_id]);
         }
         
@@ -46,7 +46,7 @@ class CommentController extends Controller
         
         if ($model = Comment::findOne($comment_id)->delete()) {
             Comment::decrCommentCount($post_id);
-            Yii::$app->session->setFlash('success', 'Comment deleted!');
+            Yii::$app->session->setFlash('success', Yii::t('post', 'Comment deleted!'));
             return $this->redirect(['/post/default/view', 'id' => $post_id]);
         }
     }
@@ -64,7 +64,7 @@ class CommentController extends Controller
         $model = Comment::findOne($comment_id);
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Comment updated!');
+            Yii::$app->session->setFlash('success', Yii::t('post', 'Comment updated!'));
             return $this->redirect(['/post/default/view', 'id' => $post_id]);
         }
         
