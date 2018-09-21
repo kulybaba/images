@@ -24,6 +24,7 @@ use yii\web\IdentityInterface;
  * @property string $nickname
  * @property string $picture
  * @property string $password write-only password
+ * @property string $picture
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -188,5 +189,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        if ($this->picture) {
+            return Yii::$app->storage->getFile($this->picture);
+        }
     }
 }

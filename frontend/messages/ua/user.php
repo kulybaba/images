@@ -8,7 +8,7 @@ return [
     'Incorrect email or password.' => 'Неправильна електронна адреса чи пароль.',
     'Login' => 'Вхід',
     'Please fill out the following fields to login:' => 'Будь ласка, заповніть наступні поля для входу:',
-    'Email' => 'Едектронна пошта',
+    'Email' => 'Електронна пошта',
     'Password' => 'Пароль',
     'Remember Me' => "Запам'ятати мене",
     'If you forgot your password you can' => 'Якщо ви забули свій пароль, ви можете',
