@@ -24,5 +24,7 @@ return [
     'Comment updated!' => 'Коментар змінено!',
     'Update comment' => 'Змінити коментар',
     'Update' => 'Змінити',
+    'Delete post' => 'Видалити публікацію',
+    'Post deleted!' => 'Публікацію видалено!',
 ];
 

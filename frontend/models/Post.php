@@ -135,4 +135,22 @@ class Post extends \yii\db\ActiveRecord
         $redis = Yii::$app->redis;
         return $redis->sismember("post:{$this->getId()}:complaints", $user->getId());
     }
+    
+    /**
+     * Delete likes, comments and complaints of post
+     * @return boolean
+     */
+    public function deleteLikesCommentsComplaints()
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        $likesKey = "post:{$this->id}:likes";
+        $commentsKey = "post:{$this->id}:comments";
+        $complaintsKey = "post:{$this->id}:complaints";
+        
+        if ($redis->del($likesKey) && $redis->del($commentsKey) && $redis->del($complaintsKey)) {
+            return true;
+        }
+        return false; 
+    }
 }

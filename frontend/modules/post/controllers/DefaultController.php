@@ -63,7 +63,25 @@ class DefaultController extends Controller
         ]);
     }
     
-    public function actionLike()
+    public function actionDelete($id)
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['/user/default/login']);
+        }
+        
+        /* @var $currentUser User */
+        $currentUser = Yii::$app->user->identity;
+        
+        $model = Post::findOne($id);
+        
+        if ($model->findOne($id)->delete()) {
+            $model->deleteLikesCommentsComplaints();
+            Yii::$app->session->setFlash('success', Yii::t('post' ,'Post deleted!'));
+            return $this->redirect(['/user/profile/view', 'nickname' => $currentUser->getNickname()]);
+        }
+    }
+
+        public function actionLike()
     {
         if (Yii::$app->user->isGuest) {
             return $this->redirect(['/user/default/login']);

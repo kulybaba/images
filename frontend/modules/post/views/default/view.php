@@ -33,9 +33,7 @@ $this->title = Yii::t('post' ,'Post');
                             </div>
                         </div>
                         <div class="post-type-image">
-                            <a href="#">
-                                <img src="<?php echo $post->getImage(); ?>" alt="">
-                            </a>
+                            <img src="<?php echo $post->getImage(); ?>" alt="">
                         </div>
                         <div class="post-description">
                             <p><?php echo Html::encode($post->description); ?></p>
@@ -60,7 +58,7 @@ $this->title = Yii::t('post' ,'Post');
                             <div class="post-date">
                                 <span><?php echo Yii::$app->formatter->asDatetime($post->created_at); ?></span>    
                             </div>
-                            <?php if ($currentUser->id != $post->user_id): ?>
+                            <?php if ($currentUser && $currentUser->id != $post->user_id): ?>
                                 <div class="post-report">
                                     <?php if (!$post->isReported($currentUser)): ?>
                                         <a href="#" class="btn btn-default button-complain" data-id="<?php echo $post->id; ?>">
@@ -77,6 +75,12 @@ $this->title = Yii::t('post' ,'Post');
 
                     <div class="col-sm-12 col-xs-12">
                         <br>
+                        <?php if($currentUser && $currentUser->id == $post->user_id): ?>
+                            <a href="<?php echo Url::to(['/post/default/delete', 'id' => $post->id]); ?>" class="btn btn-danger">
+                                <?php echo Yii::t('post', 'Delete post'); ?>
+                            </a>
+                        <?php endif; ?>
+                        &nbsp;&nbsp;&nbsp;
                         <a href="<?php echo Url::to(['/post/comment/create', 'post_id' => $post->id]); ?>" class="btn btn-default">
                             <?php echo Yii::t('post', 'Create comment'); ?>
                         </a>
